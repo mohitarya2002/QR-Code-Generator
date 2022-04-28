@@ -1,0 +1,44 @@
+<!doctype html>
+	<head>
+		<title>QR Code Generator Using JS</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"></script>
+		<link rel="stylesheet" type="text/css" href="style.css">
+		<script src="javascript.js"></script>
+		
+	</head>
+	<body>
+		<h3>QR Code Generator</h3>
+        <div><input id="qr-text" type="text" placeholder="Text to generate QR code"/></div>
+        <br/>
+        <div>
+            <button class="qr-btn" onclick="generateQRCode()">Create QR Code</button>
+        </div>
+        <br/>
+        <p id="qr-result">This is deault QR code:</p>
+        <canvas id="qr-code"></canvas>
+		<script>
+		/* JS comes here */
+		var qr;
+		(function() {
+				qr = new QRious({
+				element: document.getElementById('qr-code'),
+				size: 200,
+				value: 'https://learnprogram-20.blogspot.com/'
+			});
+		})();
+		
+		function generateQRCode() {
+			var qrtext = document.getElementById("qr-text").value;
+			document.getElementById("qr-result").innerHTML = "QR code for " + qrtext +":";
+			alert(qrtext);
+			qr.set({
+				foreground: 'black',
+				size: 200,
+				value: qrtext
+			});
+		}
+	</script>
+	</body>
+</html>
